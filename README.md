@@ -6,7 +6,7 @@ Simplified/enhanced sketch of https://github.com/awslabs/amazon-kinesis-client-r
 
 First run `local-setup.sh` to start local Kinesis and DynamoDB
 
-To kick of the sample producer, run `sample_kcl_producer.rb`
+To kick off the sample producer, run `sample_kcl_producer.rb`
 
 To run the sample consumer, run `rake 'kinesis:run[sample]'`
 
