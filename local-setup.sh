@@ -7,7 +7,7 @@ if [[ ! -d "local-dynamo" ]]; then
     cd ..
 fi
 
-hash kinesalite 2>/dev/null ||  npm install-g kinesalite
+hash kinesalite 2>/dev/null ||  npm install -g kinesalite
 
 java -Djava.library.path=./local-dynamo/DynamoDBLocal_lib -jar ./local-dynamo/DynamoDBLocal.jar -sharedDb &
 
