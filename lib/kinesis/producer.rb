@@ -6,7 +6,7 @@ module Kinesis
       env = ENV['RAILS_ENV'] || 'development'
       config = {}
       config[:endpoint] = 'http://localhost:4567' if env == 'development'
-      @stream_name = stream_name
+      @stream_name = "#{stream_name}-#{env}"
       @partition_key = partition_key
       @kinesis = Aws::Kinesis::Client.new(config)
     end
