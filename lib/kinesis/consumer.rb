@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require 'multi_json'
 require 'base64'
 
@@ -11,15 +9,10 @@ module Kinesis
     # Sends and receives messages to and from the KCL via this API:
     # https://github.com/awslabs/amazon-kinesis-client/blob/master/src/main/java/com/amazonaws/services/kinesis/multilang/package-info.java
 
-    def initialize
+    def initialize(processor)
       $stdin = nil
       #TODO $stdout = syslog
-      require ENV['KINESIS_PROCESSOR']
-      @processor = ENV['KINESIS_PROCESSOR']
-                     .split(/^.?\/(lib\/)?/)[1] # XD Need to sort this shit out
-                     .split('/').map { |str| str.split('_').map(&:capitalize).join }
-                     .inject(Object) { |o, c| o.const_get(c) }
-                     .new
+      @processor = processor
     end
 
     def run
@@ -94,5 +87,3 @@ module Kinesis
     end
   end
 end
-
-Kinesis::Consumer.new.run if __FILE__ == $PROGRAM_NAME
